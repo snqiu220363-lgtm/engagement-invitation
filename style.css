@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Gulzar&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gulzar', serif;
+}
+
+body {
+    background-color: #fce4ec;
+    overflow-x: hidden;
+}
+
+.screen {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.screen.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* --- دیزاینی زەرفەکە بە شێوەیەکی قووڵتر و جوانتر --- */
+#envelope-screen {
+    background-color: #222; /* باکگراوندێکی تاریک بۆ دەرکەوتنی زەرفەکە */
+}
+
+.envelope {
+    position: relative;
+    width: 320px;
+    height: 220px;
+    background: linear-gradient(135deg, #e91e63, #ad1457); /* ڕەنگی تێکەڵاو بۆ جوانی */
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6); /* سێبەری گەورە بۆ دەرکەوتنی 3D */
+}
+
+.envelope .flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-top: 120px solid #d81b60; /* ڕەنگی کراوەتر بۆ سەری نامەکە */
+    transform-origin: top;
+    transition: transform 0.6s ease-in-out;
+    z-index: 3;
+    filter: drop-shadow(0 8px 6px rgba(0,0,0,0.4)); /* سێبەر بۆ سەر زەرفەکە */
+}
+
+.envelope .pocket {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-left: 160px solid #c2185b;
+    border-right: 160px solid #c2185b;
+    border-bottom: 120px solid #880e4f; /* ڕەنگی تاریکتر بۆ خوارەوە بۆ دروستکردنی قووڵی */
+    z-index: 2;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+/* مۆرە زێڕینەکە */
+.seal {
+    position: absolute;
+    top: 120px; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, #ffd700, #b8860b);
+    border-radius: 50%;
+    z-index: 4;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    border: 2px solid #daa520;
+    transition: opacity 0.3s;
+}
+
+.envelope.open .seal {
+    opacity: 0;
+}
+
+/* چاککردنی شوێنی تێکستەکە بۆ ئەوەی نەچێتە سەر زەرفەکە */
+.text-hint {
+    position: absolute;
+    bottom: -80px; 
+    width: 100%;
+    text-align: center;
+    color: #fce4ec;
+    font-size: 18px;
+    animation: bounce 1.5s infinite;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+/* --- دیزاینی ناوەوەی نامەکە (وەک خۆیەتی) --- */
+.container {
+    max-width: 400px;
+    margin: 20px auto;
+    background: white;
+    padding: 30px;
