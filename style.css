@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Gulzar&display=swap');
+/* هێنانی فۆنتەکان لە گوگڵەوە */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@400;500;700&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Gulzar', serif;
 }
 
 body {
-    background-color: #fce4ec;
+    background-color: #fcf4f6; /* باکگراوندێکی کرێمی/پەمەیی کاڵ وەک ڤیدیۆکە */
+    font-family: 'Tajawal', sans-serif; /* فۆنتی مۆدێرن بۆ تێکستەکان */
     overflow-x: hidden;
 }
 
@@ -22,94 +23,157 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 }
 
-/* --- دیزاینی زەرفەکە بە شێوەیەکی قووڵتر و جوانتر --- */
+/* --- دیزاینی وێنەی زەرفەکە --- */
 #envelope-screen {
-    background-color: #222; /* باکگراوندێکی تاریک بۆ دەرکەوتنی زەرفەکە */
+    background-color: #d81b60;
 }
 
-.envelope {
-    position: relative;
-    width: 320px;
-    height: 220px;
-    background: linear-gradient(135deg, #e91e63, #ad1457); /* ڕەنگی تێکەڵاو بۆ جوانی */
-    border-radius: 12px;
-    cursor: pointer;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.6); /* سێبەری گەورە بۆ دەرکەوتنی 3D */
-}
-
-.envelope .flap {
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-left: 160px solid transparent;
-    border-right: 160px solid transparent;
-    border-top: 120px solid #d81b60; /* ڕەنگی کراوەتر بۆ سەری نامەکە */
-    transform-origin: top;
-    transition: transform 0.6s ease-in-out;
-    z-index: 3;
-    filter: drop-shadow(0 8px 6px rgba(0,0,0,0.4)); /* سێبەر بۆ سەر زەرفەکە */
-}
-
-.envelope .pocket {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    border-left: 160px solid #c2185b;
-    border-right: 160px solid #c2185b;
-    border-bottom: 120px solid #880e4f; /* ڕەنگی تاریکتر بۆ خوارەوە بۆ دروستکردنی قووڵی */
-    z-index: 2;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-}
-
-/* مۆرە زێڕینەکە */
-.seal {
-    position: absolute;
-    top: 120px; 
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50px;
-    height: 50px;
-    background: radial-gradient(circle, #ffd700, #b8860b);
-    border-radius: 50%;
-    z-index: 4;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    border: 2px solid #daa520;
-    transition: opacity 0.3s;
-}
-
-.envelope.open .seal {
-    opacity: 0;
-}
-
-/* چاککردنی شوێنی تێکستەکە بۆ ئەوەی نەچێتە سەر زەرفەکە */
-.text-hint {
-    position: absolute;
-    bottom: -80px; 
+.envelope-image {
     width: 100%;
-    text-align: center;
-    color: #fce4ec;
-    font-size: 18px;
-    animation: bounce 1.5s infinite;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    height: 100vh;
+    /* وێنەی باکگراوندی نەخشین */
+    background-image: url('https://www.transparenttextures.com/patterns/floral-metallic.png'), linear-gradient(135deg, #e91e63, #880e4f);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 20vh;
+    cursor: pointer;
+    box-shadow: inset 0 0 150px rgba(0,0,0,0.5);
 }
 
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+.open-text {
+    background: rgba(255, 255, 255, 0.9);
+    color: #880e4f;
+    padding: 10px 40px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    animation: pulse 1.5s infinite;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-.envelope.open .flap {
-    transform: rotateX(180deg);
-    z-index: 1;
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
-/* --- دیزاینی ناوەوەی نامەکە (وەک خۆیەتی) --- */
+/* --- دیزاینی ناوەوە وەک ڤیدیۆکە --- */
 .container {
-    max-width: 400px;
-    margin: 20px auto;
+    max-width: 450px;
+    width: 100%;
+    background: #fdf5f7;
+    padding: 40px 20px;
+    text-align: center;
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.butterfly {
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+.intro-text {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+/* فۆنتی تایبەتی خەتخۆشی بۆ ناوەکان */
+.names {
+    font-family: 'Amiri', serif;
+    color: #d81b60;
+    font-size: 45px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.names .and {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 20px;
+    color: #444;
+    display: inline-block;
+    margin: 0 10px;
+}
+
+/* کارتە پەمەییەکان */
+.pink-card {
+    background: linear-gradient(135deg, #e91e63, #c2185b);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(216, 27, 96, 0.3);
+    position: relative;
+    padding-top: 30px;
+}
+
+.pill {
     background: white;
-    padding: 30px;
+    color: #c2185b;
+    padding: 5px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 16px;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.details {
+    color: white;
+    font-size: 18px;
+}
+
+.date-text, .time-text, .location-text {
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    width: 60%;
+    margin: 0 auto;
+}
+
+.notes {
+    color: #d81b60;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 25px 0;
+}
+
+.contact-btn {
+    background: #d81b60;
+    color: white;
+    border: none;
+    padding: 12px 0;
+    width: 80%;
+    border-radius: 30px;
+    font-size: 18px;
+    font-family: 'Tajawal', sans-serif;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(216, 27, 96, 0.4);
+}
+
+.contact-btn .icon {
+    margin-right: 10px;
+    font-size: 20px;
+}
